@@ -116,7 +116,7 @@ These values will be used in your Flutter application to setup the OpenID Connec
 
 ## Getting started
 
-You can check the pub.dev to know how to install this plugin. [Flutter Okta SDK](https://pub.dev/packages/flutter_okta_auth_sdk/install).
+You can check the pub.dev to know how to install this plugin. [Flutter Okta Auth SDK](https://pub.dev/packages/flutter_okta_auth_sdk/install).
 
 ### Setup Android
 

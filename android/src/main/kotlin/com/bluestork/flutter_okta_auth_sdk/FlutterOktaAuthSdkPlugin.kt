@@ -21,134 +21,6 @@ import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
 
 /** FlutterOktaAuthSdkPlugin */
-//class FlutterOktaAuthSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware,PluginRegistry.ActivityResultListener {
-//  /// The MethodChannel that will the communication between Flutter and native Android
-//  ///
-//  /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-//  /// when the Flutter Engine is detached from the Activity
-//  private lateinit var channel : MethodChannel
-//  private lateinit var applicationContext : Context
-//  private var mainActivity : Activity?=null
-//
-//  override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-//    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_okta_auth_sdk")
-//    applicationContext=flutterPluginBinding.applicationContext
-//    channel.setMethodCallHandler(this)
-//  }
-//
-//
-//
-//  companion object {
-//    fun registerWith(registrar: PluginRegistry.Registrar) {
-//      val plugin = FlutterOktaAuthSdkPlugin()
-//      plugin.setActivity(registrar.activity())
-//      registrar.addActivityResultListener(plugin)
-//    }
-//  }
-//
-//  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-//
-//    val arguments = call.arguments<Map<String, Any>>()
-//    PendingOperation.init(call.method, result)
-//
-//    try {
-//      when (call.method) {
-//        "getPlatformVersion" -> {
-//          result.success(
-//                  "Android  ${android.os.Build.VERSION.RELEASE}")
-//        }
-//        AvailableMethods.CREATE_CONFIG.methodName -> {
-//          createConfig(arguments, applicationContext)
-//        }
-//        AvailableMethods.SIGN_IN.methodName -> {
-//          this.mainActivity?.let { signInNew(it) }
-//        }
-//        AvailableMethods.SIGN_OUT.methodName -> {
-//          this.mainActivity?.let { signOut(it) }
-//        }
-//        AvailableMethods.GET_USER.methodName -> {
-//          getUser()
-//        }
-//        AvailableMethods.IS_AUTHENTICATED.methodName -> {
-//          isAuthenticated()
-//        }
-//        AvailableMethods.GET_ACCESS_TOKEN.methodName -> {
-//          getAccessToken()
-//        }
-//        AvailableMethods.GET_ID_TOKEN.methodName -> {
-//          getIdToken()
-//        }
-//        AvailableMethods.REVOKE_ACCESS_TOKEN.methodName -> {
-//          revokeAccessToken()
-//        }
-//        AvailableMethods.REVOKE_ID_TOKEN.methodName -> {
-//          revokeIdToken()
-//        }
-//        AvailableMethods.REVOKE_REFRESH_TOKEN.methodName -> {
-//          revokeRefreshToken()
-//        }
-//        AvailableMethods.CLEAR_TOKENS.methodName -> {
-//          clearTokens()
-//        }
-//        AvailableMethods.INTROSPECT_ACCESS_TOKEN.methodName -> {
-//          introspectAccessToken()
-//        }
-//        AvailableMethods.INTROSPECT_ID_TOKEN.methodName -> {
-//          introspectIdToken()
-//        }
-//        AvailableMethods.INTROSPECT_REFRESH_TOKEN.methodName -> {
-//          introspectRefreshToken()
-//        }
-//        AvailableMethods.REFRESH_TOKENS.methodName -> {
-//          refreshTokens()
-//        }
-//        else -> {
-//          PendingOperation.error(Errors.METHOD_NOT_IMPLEMENTED, "Method called: ${call.method}")
-//        }
-//      }
-//    } catch (ex: java.lang.Exception) {
-//      PendingOperation.error(Errors.GENERIC_ERROR, ex.localizedMessage)
-//    }
-//
-//
-//  }
-//
-//  override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-//    channel.setMethodCallHandler(null)
-//  }
-//
-//  fun setActivity(activity: Activity) {
-//    this.mainActivity = activity
-//  }
-//
-//
-//
-//  override fun onDetachedFromActivity() {
-//    this.mainActivity = null
-//  }
-//
-//  override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-//    binding.addActivityResultListener(this)
-//    mainActivity = binding.activity
-//  }
-//
-//  override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-//    binding.addActivityResultListener(this)
-//    mainActivity = binding.activity
-//  }
-//
-//  override fun onDetachedFromActivityForConfigChanges() {
-//    this.mainActivity = null
-//  }
-//
-//
-//  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-//    OktaClient.getWebClient().handleActivityResult(requestCode, resultCode, data)
-////    return PendingOperation.hasPendingOperation != null
-//  }
-//
-//}
-
 
 class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   PluginRegistry.ActivityResultListener, ActivityAware {
@@ -160,7 +32,7 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   companion object {
     fun registerWith(registrar: PluginRegistry.Registrar) {
       val plugin = FlutterOktaAuthSdkPlugin()
-      plugin.setActivity(registrar.activity())
+      registrar.activity()?.let { plugin.setActivity(it) } //error
       plugin.onAttachedToEngine(registrar.context(), registrar.messenger())
       registrar.addActivityResultListener(plugin)
     }
@@ -175,7 +47,6 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-    println("requestCode===>> $requestCode")
     OktaClient.getWebClient().handleActivityResult(requestCode, resultCode, data)
     return PendingOperation.hasPendingOperation != null
   }
@@ -208,7 +79,9 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
     try {
       when (call.method) {
         AvailableMethods.CREATE_CONFIG.methodName -> {
-          createConfig(arguments, applicationContext!!)
+          if (arguments != null) {
+            createConfig(arguments, applicationContext!!)
+          }
         }
         AvailableMethods.SIGN_IN.methodName -> {
           signInNew(this.mainActivity!!)

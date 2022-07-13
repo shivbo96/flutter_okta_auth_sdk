@@ -166,8 +166,8 @@ You will also need to know your Okta Org URL, which you can see on the home page
 Before calling any other method, it is important that you call `createConfig` to set up the configuration properly on the native modules.
 
 ``` dart
-import 'package:flutter_okta_sdk/flutter_okta_auth_sdk.dart';
-import 'package:flutter_okta_sdk/base_request.dart';
+import 'package:flutter_okta_auth_sdk/flutter_okta_auth_sdk.dart';
+import 'package:flutter_okta_auth_sdk/base_request.dart';
 
  var flutterOktaAuthSdk = FlutterOktaAuthSdk();
 var oktaBaseRequest = BaseRequest(

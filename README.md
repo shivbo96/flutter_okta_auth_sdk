@@ -5,6 +5,8 @@
 
 The Flutter Okta Auth SDK library helps you to add authentication in your Flutter apps. It is a wrapper around [Okta Android](https://github.com/okta/okta-oidc-android) and [Okta iOS](https://github.com/okta/okta-oidc-ios).
 
+Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
+
 This library follows the current best practice for native apps using:
 
 * [OAuth 2.0 Authorization Code Flow](https://tools.ietf.org/html/rfc6749#section-1.3.1)

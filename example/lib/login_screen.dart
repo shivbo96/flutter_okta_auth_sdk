@@ -23,30 +23,28 @@ class LoginScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-
-
-            if(kIsWeb){
+            if (kIsWeb) {
               // var codeVerifier = getRandomString(50);
               // js.context.callMethod(
               //     'loginOkta', [transformCodeChallenge(codeVerifier)]);
-            }else{
+            } else {
               await OktaAuthProvider.of(context)?.authService.authorize();
-              var isAuthenticated = await OktaAuthProvider.of(context)?.authService.isAuthenticated();
-              if(isAuthenticated==true){
+              var isAuthenticated = await OktaAuthProvider.of(context)
+                  ?.authService
+                  .isAuthenticated();
+              if (isAuthenticated == true) {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content:Text('you are authenticated by okta'),
+                  content: Text('you are authenticated by okta'),
                   duration: Duration(seconds: 2),
                 ));
                 Navigator.of(context).pushNamed(LandingScreen.routeName);
-              }else{
+              } else {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content:Text('you are not authenticated by okta'),
+                  content: Text('you are not authenticated by okta'),
                   duration: Duration(seconds: 2),
                 ));
               }
             }
-
-
           },
           child: const Text('Log In'),
         ),
@@ -54,7 +52,6 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
 
 final _rnd = Random();
 const _chars =

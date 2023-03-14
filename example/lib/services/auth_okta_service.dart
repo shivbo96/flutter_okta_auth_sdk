@@ -5,18 +5,19 @@ import 'package:flutter_okta_auth_sdk/flutter_okta_auth_sdk.dart';
 class AuthOktaService {
   var flutterOktaAuthSdk = FlutterOktaAuthSdk();
   static const String oktaDomain = 'trial-8431719.okta.com';
-    static const String oktaAuthorizer = 'default';
+  static const String oktaAuthorizer = 'default';
 
-    static const String oktaClientId = '0oa4j3bmlzB1ZxNqb697';
+  static const String oktaClientId = '0oa4j3bmlzB1ZxNqb697';
 
-    static const String oktaIssuerUrl =
-        'https://$oktaDomain/oauth2/$oktaAuthorizer';
-    static const String oktaDiscoveryUrl =
-        'https://$oktaDomain/.well-known/openid-configuration';
+  static const String oktaIssuerUrl =
+      'https://$oktaDomain/oauth2/$oktaAuthorizer';
+  static const String oktaDiscoveryUrl =
+      'https://$oktaDomain/.well-known/openid-configuration';
 
-    static const String oktaRedirectUrl = 'com.bluestork.flutteroktaauth:/callback';
-    static const String oktaLogoutRedirectUrl = 'com.bluestork.flutteroktaauth:/splash';
-
+  static const String oktaRedirectUrl =
+      'com.bluestork.flutteroktaauth:/callback';
+  static const String oktaLogoutRedirectUrl =
+      'com.bluestork.flutteroktaauth:/splash';
 
   static final oktaBaseRequest = BaseRequest(
       issuer: oktaIssuerUrl,
@@ -24,7 +25,7 @@ class AuthOktaService {
       discoveryUrl: oktaDiscoveryUrl,
       endSessionRedirectUri: oktaLogoutRedirectUrl,
       redirectUrl: oktaRedirectUrl,
-      scopes: [ "openid", "profile", "offline_access"]);
+      scopes: ["openid", "profile", "offline_access"]);
 
   Future createConfig() async {
     await flutterOktaAuthSdk.createConfig(oktaBaseRequest);
@@ -37,7 +38,7 @@ class AuthOktaService {
       }
       await flutterOktaAuthSdk.signIn();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -48,7 +49,7 @@ class AuthOktaService {
       }
       await flutterOktaAuthSdk.signOut();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -59,7 +60,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.getUser();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
   }
 
@@ -82,7 +83,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.getAccessToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -94,7 +95,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.getIdToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -106,7 +107,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.revokeAccessToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -118,7 +119,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.revokeIdToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -130,7 +131,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.revokeRefreshToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -142,7 +143,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.clearTokens();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -154,7 +155,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.introspectAccessToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -166,7 +167,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.introspectIdToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -178,7 +179,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.introspectRefreshToken();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }
@@ -190,7 +191,7 @@ class AuthOktaService {
       }
       return await flutterOktaAuthSdk.refreshTokens();
     } catch (e) {
-       debugPrint(e.toString());
+      debugPrint(e.toString());
     }
     return null;
   }

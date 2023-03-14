@@ -1,13 +1,10 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_okta_auth_sdk/base_request.dart';
 
-
 class FlutterOktaAuthSdk {
-  static const MethodChannel _channel =
-       MethodChannel('flutter_okta_auth_sdk');
+  static const MethodChannel _channel = MethodChannel('flutter_okta_auth_sdk');
 
   bool isInitialized = false;
-
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
@@ -15,7 +12,6 @@ class FlutterOktaAuthSdk {
   }
 
   Future<void> createConfig(BaseRequest request) async {
-
     isInitialized = false;
     await _channel.invokeMethod(
         "createConfig", convertBaseRequestToMap(request));

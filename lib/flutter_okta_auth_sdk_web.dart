@@ -31,7 +31,8 @@ class FlutterOktaAuthSdkWeb {
       default:
         throw PlatformException(
           code: 'Unimplemented',
-          details: 'flutter_okta_auth_sdk for web doesn\'t implement \'${call.method}\'',
+          details:
+              'flutter_okta_auth_sdk for web doesn\'t implement \'${call.method}\'',
         );
     }
   }

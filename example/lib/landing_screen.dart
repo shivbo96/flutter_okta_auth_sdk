@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'main_screen.dart';
 import 'services/okta_auth_provider.dart';
 
-
 class LandingScreen extends StatelessWidget {
   static const routeName = '/landing';
 
@@ -12,23 +11,27 @@ class LandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("You made it!"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Column(
+        appBar: AppBar(
+          title: const Text("You made it!"),
+          centerTitle: true,
+        ),
+        body: Center(
+          child: Column(
             // mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
                 onPressed: () async {
-                  var isAuthenticated = await OktaAuthProvider.of(context)?.authService.isAuthenticated();
+                  var isAuthenticated = await OktaAuthProvider.of(context)
+                      ?.authService
+                      .isAuthenticated();
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content:Text(isAuthenticated??false?'you are authenticated by okta':'you are not authenticated by okta'),
+                    content: Text(isAuthenticated ?? false
+                        ? 'you are authenticated by okta'
+                        : 'you are not authenticated by okta'),
                     duration: const Duration(seconds: 2),
                   ));
-                    },
+                },
                 child: const Text('Check Auth Status'),
               ),
               const SizedBox(height: 10),
@@ -38,9 +41,8 @@ class LandingScreen extends StatelessWidget {
                 },
                 child: const Text('Use API methods'),
               ),
-          ],
-        ),
-      )
-    );
+            ],
+          ),
+        ));
   }
 }

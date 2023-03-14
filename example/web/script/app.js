@@ -20,7 +20,7 @@ authClient.token.getWithRedirect({
 
 function loginTokenOkta(codeValue) {
 var authClient = new OktaAuth({
-  clientId: '0oat7c631SGvf5tX35d6',
+  clientId: '',
  redirectUri: 'http://localhost:8080/login/callback',
   grant_type: 'authorization_code',
   token_endpoint_auth_method : 'none',

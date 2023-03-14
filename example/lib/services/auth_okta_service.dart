@@ -4,10 +4,10 @@ import 'package:flutter_okta_auth_sdk/flutter_okta_auth_sdk.dart';
 
 class AuthOktaService {
   var flutterOktaAuthSdk = FlutterOktaAuthSdk();
-  static const String oktaDomain = 'dev-42393292.okta.com';
+  static const String oktaDomain = 'trial-8431719.okta.com';
     static const String oktaAuthorizer = 'default';
 
-    static const String oktaClientId = '0oa5plwcv8nwuZorb5d7';
+    static const String oktaClientId = '0oa4j3bmlzB1ZxNqb697';
 
     static const String oktaIssuerUrl =
         'https://$oktaDomain/oauth2/$oktaAuthorizer';
@@ -15,7 +15,7 @@ class AuthOktaService {
         'https://$oktaDomain/.well-known/openid-configuration';
 
     static const String oktaRedirectUrl = 'com.bluestork.flutteroktaauth:/callback';
-    static const String oktaLogoutRedirectUrl = 'com.bluestork.flutteroktaauth:/splash/';
+    static const String oktaLogoutRedirectUrl = 'com.bluestork.flutteroktaauth:/splash';
 
 
   static final oktaBaseRequest = BaseRequest(

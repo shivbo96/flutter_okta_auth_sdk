@@ -1,5 +1,8 @@
 ## 0.0.1
-* TODO: Initial release for android and iOS (Web Coming soon...).
+*  Initial release for android and iOS (Web Coming soon...).
 
 ## 0.0.2
-* TODO: minor bug fixes for android login  with flutter 3 and above.
+*  minor bug fixes for android login  with flutter 3 and above.
+
+## 0.0.3
+*  crash fixed for other library who is using callbacks(onActivityResult) in android. and minor update 

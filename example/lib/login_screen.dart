@@ -32,11 +32,11 @@ class LoginScreen extends StatelessWidget {
             }else{
               await OktaAuthProvider.of(context)?.authService.authorize();
               var isAuthenticated = await OktaAuthProvider.of(context)?.authService.isAuthenticated();
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                content:Text('you are authenticated by okta'),
-                duration: Duration(seconds: 2),
-              ));
               if(isAuthenticated==true){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  content:Text('you are authenticated by okta'),
+                  duration: Duration(seconds: 2),
+                ));
                 Navigator.of(context).pushNamed(LandingScreen.routeName);
               }else{
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

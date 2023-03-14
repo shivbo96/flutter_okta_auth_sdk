@@ -14,7 +14,6 @@ import com.okta.oidc.util.AuthorizationException
 
 fun signInNew(activity: Activity) {
   registerCallback(activity)
-
     OktaClient.getWebClient().signIn(activity, null)
 }
 

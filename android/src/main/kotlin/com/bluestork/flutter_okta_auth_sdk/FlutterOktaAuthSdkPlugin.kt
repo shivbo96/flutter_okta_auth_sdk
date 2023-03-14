@@ -9,7 +9,6 @@ import com.bluestork.flutter_okta_auth_sdk.okta.entities.Errors
 import com.bluestork.flutter_okta_auth_sdk.okta.entities.OktaClient
 import com.bluestork.flutter_okta_auth_sdk.okta.entities.PendingOperation
 import com.bluestork.flutter_okta_auth_sdk.okta.operations.*
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -17,7 +16,6 @@ import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
 
 /** FlutterOktaAuthSdkPlugin */
@@ -47,8 +45,11 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-    OktaClient.getWebClient().handleActivityResult(requestCode, resultCode, data)
+    try {
+      OktaClient.getWebClient().handleActivityResult(requestCode, resultCode, data)
+    }catch (_:Exception){}
     return PendingOperation.hasPendingOperation != null
+
   }
 
   override fun onDetachedFromActivity() {
@@ -69,7 +70,8 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
     this.mainActivity = null
   }
 
-  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+
+  override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
     val arguments = call.arguments<Map<String, Any>>()
     PendingOperation.init(call.method, result)
 

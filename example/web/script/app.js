@@ -1,14 +1,14 @@
 var state = `state-${uuid()}`;
 function loginOkta(codeChallenge) {
 var authClient = new OktaAuth({
-  clientId: '0oat7c631SGvf5tX35d6',
+  clientId: '',
  redirectUri: 'http://localhost:8080/login/callback',
   state: state,
   response_type: 'code',
   scope: ['openid', 'email', 'profile'],
   code_challenge_method: 'S256',
   code_challenge: codeChallenge,
-  issuer: "https://login.lynhealth.io/oauth2/default/"
+  issuer: "https://localhost:8080/oauth2/default/"
 });
 
 
@@ -26,7 +26,7 @@ var authClient = new OktaAuth({
   token_endpoint_auth_method : 'none',
 //  code_challenge: codeChallenge,
   code:codeValue,
-  issuer: "https://login.lynhealth.io/oauth2/default/"
+  issuer: "https://localhost:8080/oauth2/default/"
 });
 authClient.token.parseFromUrl()
     .then(data => {
@@ -39,7 +39,7 @@ authClient.token.parseFromUrl()
  function logout() {
  var authClient = new OktaAuth({
   redirectUri: 'http://localhost:8080/',
-  issuer: "https://login.lynhealth.io/oauth2/default"
+  issuer: "https://localhost:8080/oauth2/default"
  });
         authClient.signOut();
       }

@@ -7,6 +7,8 @@ The Flutter Okta Auth SDK library helps you to add authentication in your Flutte
 
 Created by Shivam Mishra [@shivbo96](https://github.com/shivbo96)
 
+<a href="https://www.buymeacoffee.com/smishra" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 This library follows the current best practice for native apps using:
 
 * [OAuth 2.0 Authorization Code Flow](https://tools.ietf.org/html/rfc6749#section-1.3.1)

@@ -12,7 +12,7 @@ class AuthOktaService {
   static const String oktaIssuerUrl =
       'https://$oktaDomain/oauth2/$oktaAuthorizer';
   static const String oktaDiscoveryUrl =
-      'https://$oktaDomain/.well-known/openid-configuration';
+      '$oktaIssuerUrl/.well-known/openid-configuration';
 
   static const String oktaRedirectUrl =
       'com.bluestork.flutteroktaauth:/callback';

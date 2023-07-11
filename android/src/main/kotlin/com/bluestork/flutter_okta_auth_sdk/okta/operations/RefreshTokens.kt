@@ -9,9 +9,9 @@ import com.bluestork.flutter_okta_auth_sdk.okta.entities.OktaClient
 import com.bluestork.flutter_okta_auth_sdk.okta.entities.PendingOperation
 
 
-
 fun refreshTokens() {
-    OktaClient.getWebClient().sessionClient.refreshToken(object : RequestCallback<Tokens, AuthorizationException> {
+    OktaClient.getWebClient().sessionClient.refreshToken(object :
+        RequestCallback<Tokens, AuthorizationException> {
         override fun onSuccess(result: Tokens) {
             val params = mutableMapOf<Any, Any?>()
             params[Constants.ACCESS_TOKEN_KEY] = result.accessToken
@@ -20,8 +20,8 @@ fun refreshTokens() {
             PendingOperation.success(params.toString())
         }
 
-        override fun onError(e: String, exception: AuthorizationException) {
-            PendingOperation.error(Errors.OKTA_OIDC_ERROR, exception.errorDescription)
+        override fun onError(error: String?, exception: AuthorizationException?) {
+            PendingOperation.error(Errors.OKTA_OIDC_ERROR, exception?.errorDescription)
         }
     })
 }

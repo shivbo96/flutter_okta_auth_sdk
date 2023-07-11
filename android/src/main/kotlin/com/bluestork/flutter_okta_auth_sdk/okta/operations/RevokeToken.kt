@@ -32,15 +32,15 @@ private fun revokeToken(tokenName: String) {
     }
 
     sessionClient.revokeToken(token,
-            object : RequestCallback<Boolean, AuthorizationException> {
-                override fun onSuccess(result: Boolean) {
-                    PendingOperation.success(result)
-                }
+        object : RequestCallback<Boolean, AuthorizationException> {
+            override fun onSuccess(result: Boolean) {
+                PendingOperation.success(result)
+            }
 
-                override fun onError(msg: String, error: AuthorizationException) {
-                    PendingOperation.error(Errors.OKTA_OIDC_ERROR, error.errorDescription)
-                }
-            })
+            override fun onError(error: String?, exception: AuthorizationException?) {
+                PendingOperation.error(Errors.OKTA_OIDC_ERROR, exception?.errorDescription)
+            }
+        })
 }
 
 

@@ -15,3 +15,12 @@ fun getAccessToken() {
         PendingOperation.success(tokens.accessToken)
     }
 }
+
+fun isAccessTokenExpired() {
+    val sessionClient = OktaClient.getWebClient().sessionClient
+    val tokens = sessionClient.tokens
+    if (tokens == null) {
+        PendingOperation.error(Errors.NO_ACCESS_TOKEN)
+    }
+    PendingOperation.success(tokens.isAccessTokenExpired)
+}

@@ -85,6 +85,9 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
             createConfig(arguments, applicationContext!!)
           }
         }
+        AvailableMethods.IS_ACCESS_TOKEN_EXPIRED.methodName -> {
+            isAccessTokenExpired()
+        }
         AvailableMethods.SIGN_IN.methodName -> {
           signInNew(this.mainActivity!!)
         }

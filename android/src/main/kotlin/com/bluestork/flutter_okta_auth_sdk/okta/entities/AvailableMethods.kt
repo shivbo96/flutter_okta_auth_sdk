@@ -16,7 +16,8 @@ enum class AvailableMethods(val methodName: String) {
     INTROSPECT_ID_TOKEN("introspectIdToken"),
     INTROSPECT_REFRESH_TOKEN("introspectRefreshToken"),
     REFRESH_TOKENS("refreshTokens"),
-    CLEAR_TOKENS("clearTokens")
+    CLEAR_TOKENS("clearTokens"),
+    IS_ACCESS_TOKEN_EXPIRED("isAccessTokenExpired"),
 }
 
 inline fun <reified T : Enum<T>> enumContains(name: String): Boolean {

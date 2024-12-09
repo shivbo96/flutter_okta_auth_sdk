@@ -37,7 +37,6 @@ fun createConfig(arguments: Map<String, Any>, context: Context) {
                 .withOktaHttpClient(HttpClientImpl(params.userAgentTemplate))
                 .setRequireHardwareBackedKeyStore(params.requireHardwareBackedKeyStore)
                 .create()
-
         OktaClient.init(config, webClient, authClient)
         PendingOperation.success(true)
     } catch (ex: java.lang.Exception) {

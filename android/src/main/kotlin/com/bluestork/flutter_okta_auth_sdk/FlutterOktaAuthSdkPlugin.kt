@@ -27,15 +27,6 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   private var applicationContext: Context? = null
   private var mainActivity: Activity? = null
 
-  companion object {
-    fun registerWith(registrar: PluginRegistry.Registrar) {
-      val plugin = FlutterOktaAuthSdkPlugin()
-      registrar.activity()?.let { plugin.setActivity(it) } //error
-      plugin.onAttachedToEngine(registrar.context(), registrar.messenger())
-      registrar.addActivityResultListener(plugin)
-    }
-  }
-
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     this.onAttachedToEngine(flutterPluginBinding.applicationContext, flutterPluginBinding.binaryMessenger)
   }

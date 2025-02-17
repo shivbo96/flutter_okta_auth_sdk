@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                 var isAuthenticated = await OktaAuthProvider.of(context)
                     ?.authService
                     .flutterOktaAuthSdk
-                    .isAccessTokenExpired();
+                    .signIn();
                 print("Token Type: $isAuthenticated");
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('you are not authenticated by okta'),

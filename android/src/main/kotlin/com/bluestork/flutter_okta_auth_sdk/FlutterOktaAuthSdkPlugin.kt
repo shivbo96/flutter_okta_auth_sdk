@@ -27,15 +27,6 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
   private var applicationContext: Context? = null
   private var mainActivity: Activity? = null
 
-  companion object {
-    fun registerWith(registrar: PluginRegistry.Registrar) {
-      val plugin = FlutterOktaAuthSdkPlugin()
-      registrar.activity()?.let { plugin.setActivity(it) } //error
-      plugin.onAttachedToEngine(registrar.context(), registrar.messenger())
-      registrar.addActivityResultListener(plugin)
-    }
-  }
-
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     this.onAttachedToEngine(flutterPluginBinding.applicationContext, flutterPluginBinding.binaryMessenger)
   }
@@ -84,6 +75,9 @@ class FlutterOktaAuthSdkPlugin : FlutterPlugin, MethodCallHandler,
           if (arguments != null) {
             createConfig(arguments, applicationContext!!)
           }
+        }
+        AvailableMethods.IS_ACCESS_TOKEN_EXPIRED.methodName -> {
+            isAccessTokenExpired()
         }
         AvailableMethods.SIGN_IN.methodName -> {
           signInNew(this.mainActivity!!)

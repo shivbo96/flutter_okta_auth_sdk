@@ -1,11 +1,12 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'landing_screen.dart';
 import 'services/okta_auth_provider.dart';
-import 'package:crypto/crypto.dart';
 // import 'dart:js' as js;
 
 class LoginScreen extends StatelessWidget {
@@ -28,7 +29,6 @@ class LoginScreen extends StatelessWidget {
               // js.context.callMethod(
               //     'loginOkta', [transformCodeChallenge(codeVerifier)]);
             } else {
-              await OktaAuthProvider.of(context)?.authService.authorize();
               var isAuthenticated = await OktaAuthProvider.of(context)
                   ?.authService
                   .isAuthenticated();
@@ -39,6 +39,11 @@ class LoginScreen extends StatelessWidget {
                 ));
                 Navigator.of(context).pushNamed(LandingScreen.routeName);
               } else {
+                var isAuthenticated = await OktaAuthProvider.of(context)
+                    ?.authService
+                    .flutterOktaAuthSdk
+                    .signIn();
+                print("Token Type: $isAuthenticated");
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text('you are not authenticated by okta'),
                   duration: Duration(seconds: 2),

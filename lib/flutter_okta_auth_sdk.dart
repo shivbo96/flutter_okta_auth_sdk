@@ -118,4 +118,11 @@ class FlutterOktaAuthSdk {
     }
     return await _channel.invokeMethod('refreshTokens');
   }
+
+  Future<bool> isAccessTokenExpired() async {
+    if (isInitialized == false) {
+      return false;
+    }
+    return await _channel.invokeMethod('isAccessTokenExpired');
+  }
 }

@@ -9,3 +9,6 @@
 
 ## 0.0.4
 *  updated okta-oidc-android  for better performance
+
+## 0.0.5
+*  updated readme file

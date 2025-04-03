@@ -1,7 +1,8 @@
 name: flutter_okta_auth_sdk
 description: This Flutter Okta Auth SDK library helps you to add authentication in your Flutter apps. It is a wrapper around Okta Android and Okta iOS.
-version: 0.0.4
-homepage: https://github.com/shivbo96/flutter_okta_auth_sdk
+version: 0.0.5
+homepage: https://www.techaheadcorp.com/
+repository: https://github.com/shivbo96/flutter_okta_auth_sdk
 
 environment:
   sdk: ">=2.16.1 <3.0.0"

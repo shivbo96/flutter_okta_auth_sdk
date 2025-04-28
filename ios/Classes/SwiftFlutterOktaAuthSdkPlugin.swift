@@ -190,7 +190,10 @@ public class SwiftFlutterOktaAuthSdkPlugin: NSObject, FlutterPlugin {
           }
         })
         break;
-
+     case "isAccessTokenExpired":
+        isAccessTokenExpired { isExpired in
+            result(isExpired)
+        }
       default:
         NSLog("\(call.method)");
         result("iOS " + UIDevice.current.systemVersion)
@@ -300,6 +303,10 @@ public class SwiftFlutterOktaAuthSdkPlugin: NSObject, FlutterPlugin {
     }
     else { callback?(nil) }
   }
+    
+    func isAccessTokenExpired(callback: ((Bool) -> (Void))) {
+        callback(stateManager?.accessToken == nil)
+    }
 
   func getIdToken(callback: ((String?) -> (Void))? ) {
     if let idToken = stateManager?.idToken {

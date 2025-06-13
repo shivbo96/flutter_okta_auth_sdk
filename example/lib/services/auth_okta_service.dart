@@ -4,28 +4,27 @@ import 'package:flutter_okta_auth_sdk/flutter_okta_auth_sdk.dart';
 
 class AuthOktaService {
   var flutterOktaAuthSdk = FlutterOktaAuthSdk();
-  static const String oktaDomain = 'trial-8431719.okta.com';
+  static const String oktaDomain = 'trial-7200466-admin.okta.com';
   static const String oktaAuthorizer = 'default';
 
-  static const String oktaClientId = '0oa4j3bmlzB1ZxNqb697';
+  static const String oktaClientId = '0oas9qm1r5mB8Jeil697';
 
-  static const String oktaIssuerUrl =
-      'https://$oktaDomain/oauth2/$oktaAuthorizer';
-  static const String oktaDiscoveryUrl =
-      'https://$oktaDomain/.well-known/openid-configuration';
+  static const String oktaIssuerUrl = 'http://$oktaDomain/oauth2/$oktaAuthorizer';
+  static const String oktaDiscoveryUrl = 'http://$oktaDomain/.well-known/openid-configuration';
 
-  static const String oktaRedirectUrl =
-      'com.bluestork.flutteroktaauth:/callback';
-  static const String oktaLogoutRedirectUrl =
-      'com.bluestork.flutteroktaauth:/splash';
+  static const String oktaRedirectUrl = 'http://localhost:8080/login/callback';
+  // static const String oktaRedirectUrl = 'com.bluestork.flutteroktaauth:/callback';
+  // static const String oktaLogoutRedirectUrl = 'com.bluestork.flutteroktaauth:/splash';
+  static const String oktaLogoutRedirectUrl = 'http://localhost:8080/';
 
   static final oktaBaseRequest = BaseRequest(
-      issuer: oktaIssuerUrl,
-      clientId: oktaClientId,
-      discoveryUrl: oktaDiscoveryUrl,
-      endSessionRedirectUri: oktaLogoutRedirectUrl,
-      redirectUrl: oktaRedirectUrl,
-      scopes: ["openid", "profile", "offline_access"]);
+    issuer: oktaIssuerUrl,
+    clientId: oktaClientId,
+    discoveryUrl: oktaDiscoveryUrl,
+    endSessionRedirectUri: oktaLogoutRedirectUrl,
+    redirectUrl: oktaRedirectUrl,
+    scopes: ["openid", "profile", "offline_access"],
+  );
 
   Future createConfig() async {
     await flutterOktaAuthSdk.createConfig(oktaBaseRequest);
@@ -38,6 +37,15 @@ class AuthOktaService {
       }
       await flutterOktaAuthSdk.signIn();
     } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future webSignIn(config) async {
+    try {
+      await flutterOktaAuthSdk.webSignIn(config);
+    } catch (e) {
+      debugPrint('webSignIn error: $e');
       debugPrint(e.toString());
     }
   }

@@ -18,8 +18,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  crypto: ^3.0.5
-  url_strategy: ^0.3.0
+
+  flutter_web_plugins:
+    sdk: flutter
+
+
+  universal_html: ^2.2.4  # Use the latest version
+  js: ^0.7.0  # For dart:js_interop
+  crypto: ^3.0.5  # For PKCE code challenge
 
   flutter_okta_auth_sdk:
 

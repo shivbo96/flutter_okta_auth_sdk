@@ -6,7 +6,7 @@ import 'services/okta_auth_provider.dart';
 class LandingScreen extends StatelessWidget {
   static const routeName = '/landing';
 
-  const LandingScreen({Key? key}) : super(key: key);
+  const LandingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

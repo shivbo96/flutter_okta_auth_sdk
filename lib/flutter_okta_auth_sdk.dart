@@ -4,7 +4,6 @@ import 'package:flutter_okta_auth_sdk/base_request.dart';
 
 import 'dart:convert' show jsonEncode;
 import 'dart:js' as js;
-import 'package:js/js_util.dart';
 
 class FlutterOktaAuthSdk {
   static const MethodChannel _channel = MethodChannel('flutter_okta_auth_sdk');
@@ -31,7 +30,7 @@ class FlutterOktaAuthSdk {
 
   Future<bool?> webSignIn(Map<String, dynamic> config) async {
     try {
-      await promiseToFuture<dynamic>(js.context.callMethod('loginOkta', [jsonEncode(config)]));
+      await js.context.callMethod('loginOkta', [jsonEncode(config)]);
       return true;
     } catch (e) {
       debugPrint('Error calling loginOkta: $e');

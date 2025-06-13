@@ -20,9 +20,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-  universal_html: ^2.2.4  # Use the latest version
-  js: ^0.7.0  # For dart:js_interop
-  crypto: ^3.0.5  # For PKCE code challenge
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

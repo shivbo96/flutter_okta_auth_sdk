@@ -12,3 +12,7 @@
 
 ## 0.0.5
 *  updated readme file
+
+## 0.1.0
+*  updated plugin and compatible  with flutter 3.29 with android updates
+* web support in progress
